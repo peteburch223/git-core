@@ -10,7 +10,10 @@
  <body>
    <div id="git-users" ng-controller="MainController as controller">
      <li ng-repeat='gitUser in controller.gitUsers'>
-     {{ gitUser.text }}
+       <img class="avatar" src="{{ gitUser.avatarUrl }}"/>
+       <p class="user-name">{{ gitUser.text }}</p>
+       <p>Repos: <span class="repos">{{ gitUser.repos }}</span></p>
+       <p>Followers: <span class="followers">{{ gitUser.followers }}</span></p>
    </li>
    </div>
  </body>
