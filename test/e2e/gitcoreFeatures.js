@@ -1,0 +1,10 @@
+describe('Todos tracker', function() {
+  it('has a title', function() {
+    browser.get('/');
+    expect(browser.getTitle()).toEqual('Git-Core');
+  });
+
+  it('shows username', function() {
+
+  })
+});
