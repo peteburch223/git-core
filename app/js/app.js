@@ -1,1 +1,1 @@
-var toDoApp = angular.module('toDoApp', []);
+var gitCoreApp = angular.module('gitCoreApp', []);
