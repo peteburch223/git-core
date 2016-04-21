@@ -1,3 +1,3 @@
 gitCoreApp.controller('MainController', [function() {
-  this.todo = "ToDo1";
+  this.gitUsers = [{text: "Jazzy"}, {text: "Pete"}];
 }]);

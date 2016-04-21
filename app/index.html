@@ -8,8 +8,10 @@
    <title>Git-Core</title>
  </head>
  <body>
-   <div id="todo" ng-controller="MainController as controller">
-     {{ controller.todo }}
+   <div id="git-users" ng-controller="MainController as controller">
+     <li ng-repeat='gitUser in controller.gitUsers'>
+     {{ gitUser.text }}
+   </li>
    </div>
  </body>
 </html>

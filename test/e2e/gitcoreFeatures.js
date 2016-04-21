@@ -5,6 +5,10 @@ describe('Todos tracker', function() {
   });
 
   it('shows username', function() {
-
-  })
+    browser.get('/');
+    var gitCoreUsers = $$('#git-users li');
+    expect(gitCoreUsers.count()).toEqual(2);
+    expect(gitCoreUsers.first().getText()).toEqual('Jazzy');
+    expect(gitCoreUsers.last().getText()).toEqual('Pete');
+  });
 });
