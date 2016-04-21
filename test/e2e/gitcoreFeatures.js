@@ -9,7 +9,6 @@ describe('Todos tracker', function() {
     var gitCoreUsers = element.all(by.repeater('gitUser in controller.gitUsers'));
     expect(gitCoreUsers.count()).toEqual(2);
     expect(gitCoreUsers.first().element(by.tagName('img')).getAttribute('src')).toEqual('https://avatars.githubusercontent.com/u/17009106?v=3');
-
     expect(gitCoreUsers.first().element(by.css('.user-name')).getText()).toEqual('Jazzy');
     expect(gitCoreUsers.first().element(by.css('.repos')).getText()).toEqual('35');
     expect(gitCoreUsers.first().element(by.css('.followers')).getText()).toEqual('45');
