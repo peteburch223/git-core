@@ -1,7 +1,8 @@
 describe('MainController', function() {
-  beforeEach(module('gitCoreApp'));
 
   var ctrl, UserDataService, UserSearchService;
+  var deferred, scope;
+
 
   var gitUsersSmithName = "smith";
   var gitUsersData = [{text: "jazzysmith", repos: 35, followers: 45, avatarUrl: "https://avatars.githubusercontent.com/u/17009106?v=3" },
@@ -9,32 +10,27 @@ describe('MainController', function() {
 
   var gitUsersSmithList = ["jazzysmith", "rhiannonsmith", "jojSmith", "petesmith"];
 
-  beforeEach(inject(function($rootScope, $controller) {
+  beforeEach(module('gitCoreApp'));
+  beforeEach(inject(function($rootScope, $controller, $q) {
+    deferred = $q.defer();
+
+    UserSearchService = jasmine.createSpyObj('UserSearchService', ['searchFor']);
+    UserSearchService.searchFor.and.returnValue($q.when(gitUsersSmithList));
 
     UserDataService = jasmine.createSpyObj('UserDataService', ['fetchUserData']);
-    UserDataService.fetchUserData.and.returnValue(gitUsersData);
+    UserDataService.fetchUserData.and.returnValue($q.when(gitUsersData));
 
-    UserSearchService = jasmine.createSpyObj('UserSearchService', ['fetchUserList']);
-    UserSearchService.fetchUserList.and.returnValue(gitUsersSmithList);
+    scope = $rootScope;
 
     ctrl = $controller('MainController', {
-      $scope: $rootScope.$new(),
       UserDataService: UserDataService,
-      UserSearchService: UserSearchService
+      UserSearchService: UserSearchService,
     });
   }));
 
-  it('returns user data from UserDataService', function() {
+  it('fetches user data from github based on a username using a promise', function(){
+    ctrl.findGitUserData(gitUsersSmithName)
+    scope.$apply();
     expect(ctrl.gitUsers).toEqual(gitUsersData);
   });
-
-  it('returns a list of git users from UserSearchService', function(){
-    expect(ctrl.findGitUsers(gitUsersSmithName)).toEqual(gitUsersSmithList);
-  });
-
-  it('calls UserSearchService.fetchUserList with a parameter', function(){
-    var temp = ctrl.findGitUsers(gitUsersSmithName);
-    expect(UserSearchService.fetchUserList).toHaveBeenCalledWith(gitUsersSmithName);
-  });
-
 });
