@@ -13,6 +13,5 @@ gitCoreApp.service('UserSearchService', ['$http', function($http){
     return response.data.items.map(function(searchResults){
       return searchResults.login;
     });
-  }
-
+  };
 }]);
