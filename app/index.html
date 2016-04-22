@@ -13,12 +13,14 @@
    <div id="git-users" ng-controller="MainController as controller">
      <input id='Input' type='text' ng-model='userName'>
      <button id='Submit' ng-click='controller.findGitUserData(userName)'>Submit</button>
-     <li ng-repeat='gitUser in controller.gitUsers'>
-       <img class="avatar" src="{{ gitUser.avatarUrl }}"/>
-       <p class="user-name">{{ gitUser.text }}</p>
-       <p>Repos: <span class="repos">{{ gitUser.repos }}</span></p>
-       <p>Followers: <span class="followers">{{ gitUser.followers }}</span></p>
-   </li>
+     <ul>
+       <li ng-repeat='gitUser in controller.gitUsers'>
+         <img class="avatar" src="{{ gitUser.avatar_url }}"/>
+         <p class="user-name">{{ gitUser.username }}</p>
+         <p>Repos: <span class="repos">{{ gitUser.public_repos }}</span></p>
+         <p>Followers: <span class="followers">{{ gitUser.followers }}</span></p>
+       </li>
+     </ul>
    </div>
  </body>
 </html>
