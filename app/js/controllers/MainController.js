@@ -11,7 +11,7 @@ gitCoreApp.controller('MainController',
     };
 
     function _fetchGitUserData(response){
-      return UserDataService.fetchUserData(response);
+      return UserDataService.getData(response);
     }
 
     function _storeGitUserData(response){

@@ -17,8 +17,8 @@ describe('MainController', function() {
     UserSearchService = jasmine.createSpyObj('UserSearchService', ['searchFor']);
     UserSearchService.searchFor.and.returnValue($q.when(gitUsersSmithList));
 
-    UserDataService = jasmine.createSpyObj('UserDataService', ['fetchUserData']);
-    UserDataService.fetchUserData.and.returnValue($q.when(gitUsersData));
+    UserDataService = jasmine.createSpyObj('UserDataService', ['getData']);
+    UserDataService.getData.and.returnValue($q.when(gitUsersData));
 
     scope = $rootScope;
 
