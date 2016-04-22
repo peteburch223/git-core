@@ -5,11 +5,18 @@
    <script src="bower_components/angular/angular.js"></script>
    <script src="js/app.js"></script>
    <script src="js/controllers/MainController.js"></script>
+   <script src="js/services/UserDataService.js"></script>
+   <script src="js/services/UserSearchService.js"></script>
    <title>Git-Core</title>
  </head>
  <body>
-   <div id="todo" ng-controller="MainController as controller">
-     {{ controller.todo }}
+   <div id="git-users" ng-controller="MainController as controller">
+     <li ng-repeat='gitUser in controller.gitUsers'>
+       <img class="avatar" src="{{ gitUser.avatarUrl }}"/>
+       <p class="user-name">{{ gitUser.text }}</p>
+       <p>Repos: <span class="repos">{{ gitUser.repos }}</span></p>
+       <p>Followers: <span class="followers">{{ gitUser.followers }}</span></p>
+   </li>
    </div>
  </body>
 </html>

@@ -1,3 +1,4 @@
+
 gitCoreApp.service('UserSearchService', ['$http', function($http){
   var self = this;
 
