@@ -5,21 +5,13 @@ gitCoreApp.controller('MainController',
     self.gitUsers = []
 
     self.findGitUserData = function(userName){
-      console.log('in findGitUserData');
-      console.log(self.gitUsers);
-      UserSearchService.searchFor(userName)
+        UserSearchService.searchFor(userName)
         .then(_fetchGitUserData)
       };
 
     function _fetchGitUserData(response){
-      console.log('in _fetchGitUserData');
-      console.log(response);
-
       return UserDataService.getData(response, function(results){
-        console.log('in callback');
-        // console.log(results);
         _storeGitUserData(results);
-        console.log(self.gitUsers);
       });
     }
 
