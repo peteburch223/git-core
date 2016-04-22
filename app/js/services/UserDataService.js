@@ -1,3 +1,4 @@
+
 // gitCoreApp.service('UserDataService', ['$http', function($http){
 //   var self = this;
 //
@@ -14,6 +15,7 @@
 //     }
 //   };
 // }]);
+
 
 gitCoreApp.service('UserDataService', ['$http', function($http){
   var self = this;
