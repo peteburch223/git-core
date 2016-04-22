@@ -24,6 +24,6 @@ gitCoreApp.controller('MainController',
     }
 
     function _storeGitUserData(response){
-      self.gitUsers = [response];
+      self.gitUsers.push(response);
     }
 }]);
