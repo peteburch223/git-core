@@ -11,6 +11,8 @@
  </head>
  <body>
    <div id="git-users" ng-controller="MainController as controller">
+     <input id='Input' type='text' ng-model='userName'>
+     <button id='Submit' ng-click='controller.findGitUserData(userName)'>Submit</button>
      <li ng-repeat='gitUser in controller.gitUsers'>
        <img class="avatar" src="{{ gitUser.avatarUrl }}"/>
        <p class="user-name">{{ gitUser.text }}</p>
