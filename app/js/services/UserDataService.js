@@ -1,8 +1,43 @@
-gitCoreApp.service('UserDataService', function() {
+
+// gitCoreApp.service('UserDataService', ['$http', function($http){
+//   var self = this;
+//
+//   self.getData = function(username){
+//     return $http.get('https://api.github.com/users/' + username + '?access_token=eed410d933e9c4e65a6a02d6db1a12bdf66545b3')
+//     .then(_handleResponseFromApi);
+//
+//     function _handleResponseFromApi(response){
+//         var userData = response.data;
+//         return {username: userData.login,
+//                 avatar_url: userData.avatar_url,
+//                 followers: userData.followers,
+//                 public_repos: userData.public_repos};
+//     }
+//   };
+// }]);
+
+
+gitCoreApp.service('UserDataService', ['$http', function($http){
   var self = this;
 
-  self.fetchUserData = function() {
-    return [{text: "jazzysmith", repos: 35, followers: 45, avatarUrl: "https://avatars.githubusercontent.com/u/17009106?v=3" },
-            {text: "petesmith", repos: 27, followers: 19, avatarUrl: "https://avatars.githubusercontent.com/u/4344964?v=3"}];
+  self.getData = function(usernames){
+    return usernames.map(_getUserData);
   };
-});
+
+  function _getUserData(username){
+    return _getApiData(username)
+      .then(_handleResponseFromApi);
+  }
+
+  function _getApiData(username){
+    return $http.get('https://api.github.com/users/' + username + '?access_token=eed410d933e9c4e65a6a02d6db1a12bdf66545b3');
+  }
+
+  function _handleResponseFromApi(response){
+    var userData = response.data;
+    return {username: userData.login,
+            avatar_url: userData.avatar_url,
+            followers: userData.followers,
+            public_repos: userData.public_repos};
+  }
+}]);
