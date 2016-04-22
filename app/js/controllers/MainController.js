@@ -17,6 +17,4 @@ gitCoreApp.controller('MainController',
     function _storeGitUserData(response){
       self.gitUsers = response;
     }
-
-
 }]);
